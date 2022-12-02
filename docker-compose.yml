@@ -1,0 +1,60 @@
+version: '3.9'
+services:
+  neo4j:
+    image: neo4j:4.4
+    hostname: neo4j
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neoplugins:/neodata
+      - neoplugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/test
+      NEO4J_dbms_logs_debug_level: DEBUG
+  hasura:
+    image: hasura/graphql-engine:latest
+    ports:
+      - "7070:8080"
+    depends_on:
+      - database
+    restart: always
+    env_file:
+      - ./hasura/hasura.env
+    # volumes:
+    #   - ./hasura/metadata:/hasura-metadata
+  database:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    env_file:
+      - ./postgresql/postgres.env
+    volumes:
+      - pgdb_data:/var/lib/postgresql/data
+      - ./postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./localtime.buenos_aires:/etc/localtime.buenos_aires
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - 8080:80
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - database
+  hdb:
+    image: busybox:latest
+    depends_on:
+      - hasura
+      - database
+volumes:
+  neodata:
+  neoplugins:
+  pgdb_data:
+  pgadmin_data:

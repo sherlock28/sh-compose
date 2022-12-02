@@ -1,0 +1,163 @@
+{
+  "resource_version": 5,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "addresses",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "carrers",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "cities",
+              "schema": "sh"
+            },
+            "object_relationships": [
+              {
+                "name": "state",
+                "using": {
+                  "foreign_key_constraint_on": "state_id"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "concepts",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "coordinates",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "owners",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "ownerships",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "ownerships_images",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "ownerships_types",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "persons",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "prices_rents",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "publications",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "rents",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "requests",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "restrictions",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "states",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "students",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "tags",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "universities",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "user_categories",
+              "schema": "sh"
+            }
+          },
+          {
+            "table": {
+              "name": "users",
+              "schema": "sh"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "pool_settings": {
+              "connection_lifetime": 600,
+              "idle_timeout": 180,
+              "max_connections": 50,
+              "retries": 1
+            },
+            "use_prepared_statements": true
+          }
+        }
+      }
+    ]
+  }
+}
