@@ -265,29 +265,32 @@ INSERT INTO "sh".carrers (id, name, abbr, university_id, created_at, updated_at)
 	(5, 'Ingeniería civil', 'CIV', 1, now(), NULL);
 
 INSERT INTO "sh".states (id, name, created_at, updated_at) VALUES
-	(1, 'Montana', now(), NULL),
-	(2, 'Utah', now(), NULL),
-	(3, 'Pennsylvania', now(), NULL),
-	(4, 'Nebraska', now(), NULL),
-	(5, 'Connecticut', now(), NULL),
-	(6, 'Pennsylvania', now(), NULL),
-	(7, 'Oklahoma', now(), NULL),
-	(8, 'Pennsylvania', now(), NULL),
-	(9, 'Kansas', now(), NULL),
-	(10, 'Vermont', now(), NULL),
-	(11, 'New York', now(), NULL),
-	(12, 'Oklahoma', now(), NULL),
-	(13, 'Mississippi', now(), NULL),
-	(14, 'Alaska', now(), now()),
-	(15, 'Oklahoma', now(), NULL),
-	(16, 'Texas', now(), NULL),
-	(17, 'Kansas', now(), NULL),
-	(18, 'District of Columbia', now(), NULL),
-	(19, 'Tucumán', now(), NULL),
-	(20, 'North Dakota', now(), NULL);
+	(1, 'Buenos Aires', now(), NULL),
+	(2, 'Ciudad Autónoma de Buenos Aires', now(), NULL),
+	(3, 'Catamarca', now(), NULL),
+	(4, 'Chubut', now(), NULL),
+	(5, 'Córdoba', now(), NULL),
+	(6, 'Corrientes', now(), NULL),
+	(7, 'Entre Ríos', now(), NULL),
+	(8, 'Formosa', now(), NULL),
+	(9, 'Jujuy', now(), NULL),
+	(10, 'La Pampa', now(), NULL),
+	(11, 'La Rioja', now(), NULL),
+	(12, 'Mendoza', now(), NULL),
+	(13, 'Misiones', now(), NULL),
+	(14, 'Neuquén', now(), now()),
+	(15, 'Río Negro', now(), NULL),
+	(16, 'Salta', now(), NULL),
+	(17, 'San Juan', now(), NULL),
+	(18, 'San Luis', now(), NULL),
+	(19, 'Santa Cruz', now(), NULL),
+	(21, 'Santa Fe', now(), NULL),
+	(22, 'Santiago del Estero', now(), NULL),
+	(23, 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', now(), NULL),
+	(24, 'Tucumán', now(), NULL);
 
 INSERT INTO "sh".cities (id, name, state_id, created_at, updated_at) VALUES
-	(1, 'San Miguel de Tucumán', 19, now(), NULL),
+	(1, 'San Miguel de Tucumán', 24, now(), NULL),
 	(2, 'Jovanyport', 3, now(), NULL),
 	(3, 'Lake Milton', 16, now(), NULL),
 	(4, 'South Jaydaville', 18, now(), NULL),
@@ -420,6 +423,15 @@ INSERT INTO "sh".ownerships (id, shared, rooms, bathrooms, size, rating, ownersh
 	(5, FALSE, 5, 3, 37, 3, TRUE, 1, 20, 3, 9, 15, now(), NULL),
 	(6, FALSE, 2, 3, 80, 2, TRUE, 2, 18, 1, 12, 10, now(), NULL),
 	(7, FALSE, 5, 2, 31, 4, FALSE, 1, 3, 2, 16, 1, now(), NULL);
+
+INSERT INTO "sh".ownerships (id, imageurl, public_id, ownerships_id, created_at, updated_at) VALUES
+	(1, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891816/segundohogar/images/bbbelmhjusxpjlaesjam.jpg", "segundohogar/images/bbbelmhjusxpjlaesjam", 1, now(), NULL),
+	(2, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891808/segundohogar/images/dv4oypog7bn5mlpe0dlj.jpg", "segundohogar/images/dv4oypog7bn5mlpe0dlj", 2, now(), NULL),
+	(3, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891802/segundohogar/images/xzhru9nytkpecqmhedh9.jpg", "segundohogar/images/xzhru9nytkpecqmhedh9", 3, now(), NULL),
+	(4, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891795/segundohogar/images/upbvrdum45bk1e1yoii3.webp", "segundohogar/images/upbvrdum45bk1e1yoii3", 4, now(), NULL),
+	(5, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891789/segundohogar/images/lyy3m4qbvoiznihjrrjk.jpg", "segundohogar/images/lyy3m4qbvoiznihjrrjk", 5, now(), NULL),
+	(6, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891782/segundohogar/images/omz7ur2rcsncoalxq4rd.jpg", "segundohogar/images/omz7ur2rcsncoalxq4rd", 6, now(), NULL),
+	(7, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891747/segundohogar/images/bserg8l2vffbkyepielu.webp", "segundohogar/images/bserg8l2vffbkyepielu", 7, now(), NULL);
 
 INSERT INTO "sh".students (id, file_number, shared, persons_id, carrers_id, created_at, updated_at) VALUES
 	(1, 4577, FALSE, 1, 2, now(), NULL),
