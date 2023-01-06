@@ -221,6 +221,7 @@ CREATE TABLE IF NOT EXISTS "sh".users (
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL,
 
+   CONSTRAINT fk_persons_id FOREIGN KEY("persons_id") REFERENCES "sh".persons("id"),
    CONSTRAINT fk_user_categories_id FOREIGN KEY("user_categories_id") REFERENCES "sh".user_categories("id")
 );
 
