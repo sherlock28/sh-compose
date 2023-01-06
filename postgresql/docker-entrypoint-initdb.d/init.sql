@@ -254,8 +254,12 @@ INSERT INTO "sh".addresses (id, address, floor, apartment, created_at, updated_a
 	(19, '30083 Fahey Ports\nEichmannborough, TN 16646-8019', '6', 's', now(), NULL),
 	(20, '74536 Swift Passage\nLake Joaquinbury, WY 79714-4906', '4', 'z', now(), NULL);
 
+SELECT SETVAL('sh."addresses_id_seq"', (SELECT MAX(id) FROM "sh".addresses), true);
+
 INSERT INTO "sh".universities (id, name, campus, created_at, updated_at) VALUES
 	(1, 'Universidad Tecnologica Nacional', 'Regional Tucuman', now(), NULL);
+
+SELECT SETVAL('sh."universities_id_seq"', (SELECT MAX(id) FROM "sh".universities), true);
 
 INSERT INTO "sh".carrers (id, name, abbr, university_id, created_at, updated_at) VALUES
 	(1, 'Ingeniería en sistemas de información', 'ISI', 1, now(), NULL),
@@ -263,6 +267,8 @@ INSERT INTO "sh".carrers (id, name, abbr, university_id, created_at, updated_at)
 	(3, 'Ingeniería eléctrica', 'ELE', 1, now(), NULL),
 	(4, 'Ingeniería electrónica', 'ELT', 1, now(), NULL),
 	(5, 'Ingeniería civil', 'CIV', 1, now(), NULL);
+
+SELECT SETVAL('sh."carrers_id_seq"', (SELECT MAX(id) FROM "sh".carrers), true);
 
 INSERT INTO "sh".states (id, name, created_at, updated_at) VALUES
 	(1, 'Buenos Aires', now(), NULL),
@@ -289,6 +295,8 @@ INSERT INTO "sh".states (id, name, created_at, updated_at) VALUES
 	(23, 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', now(), NULL),
 	(24, 'Tucumán', now(), NULL);
 
+SELECT SETVAL('sh."states_id_seq"', (SELECT MAX(id) FROM "sh".states), true);
+
 INSERT INTO "sh".cities (id, name, state_id, created_at, updated_at) VALUES
 	(1, 'San Miguel de Tucumán', 24, now(), NULL),
 	(2, 'Jovanyport', 3, now(), NULL),
@@ -311,6 +319,8 @@ INSERT INTO "sh".cities (id, name, state_id, created_at, updated_at) VALUES
 	(19, 'Walkerstad', 18, now(), NULL),
 	(20, 'Rennertown', 4, now(), NULL);
 
+SELECT SETVAL('sh."cities_id_seq"', (SELECT MAX(id) FROM "sh".cities), true);
+
 INSERT INTO "sh".concepts (id, percentage_increase, period_increase, created_at, updated_at) VALUES
 	(1, 56, 4, now(), NULL),
 	(2, 41, 7, now(), NULL),
@@ -322,6 +332,8 @@ INSERT INTO "sh".concepts (id, percentage_increase, period_increase, created_at,
 	(8, 69, 4, now(), NULL),
 	(9, 57, 8, now(), NULL),
 	(10, 37, 9, now(), NULL);
+
+SELECT SETVAL('sh."concepts_id_seq"', (SELECT MAX(id) FROM "sh".concepts), true);
 
 INSERT INTO "sh".coordinates (id, lat, lon, created_at, updated_at) VALUES
 	(1, -26.889985598011528, -65.19463571371611, now(), NULL),
@@ -345,6 +357,8 @@ INSERT INTO "sh".coordinates (id, lat, lon, created_at, updated_at) VALUES
 	(19, -26.83296616635499, -65.19490967066699, now(), NULL),
 	(20, -26.81908402231498, -65.19941141352673, now(), NULL);
 
+SELECT SETVAL('sh."coordinates_id_seq"', (SELECT MAX(id) FROM "sh".coordinates), true);
+
 INSERT INTO "sh".persons (id, lastname, firstname, gender, birth_date, phone, created_at, updated_at) VALUES
 	(1, 'Altenwerth', 'Edwardo', 'male', '1995-04-13', '+15314181299', now(), NULL),
 	(2, 'Jast', 'Nels', 'female', '2002-03-12', '+18138390150', now(), NULL),
@@ -366,6 +380,8 @@ INSERT INTO "sh".persons (id, lastname, firstname, gender, birth_date, phone, cr
 	(18, 'Torphy', 'Terrence', 'female', '1985-01-06', '+14059460873', now(), NULL),
 	(19, 'Lueilwitz', 'Mose', 'female', '1996-03-16', '+16304816399', now(), NULL),
 	(20, 'Langosh', 'Carson', 'female', '1993-10-17', '+13347302440', now(), NULL);
+
+SELECT SETVAL('sh."persons_id_seq"', (SELECT MAX(id) FROM "sh".persons), true);
 
 INSERT INTO "sh".owners (id, persons_id, created_at, updated_at) VALUES
 	(1, 1, now(), NULL),
@@ -389,9 +405,13 @@ INSERT INTO "sh".owners (id, persons_id, created_at, updated_at) VALUES
 	(19, 19, now(), NULL),
 	(20, 20, now(), NULL);
 
+SELECT SETVAL('sh."owners_id_seq"', (SELECT MAX(id) FROM "sh".owners), true);
+
 INSERT INTO "sh".ownerships_types (id, description, created_at, updated_at) VALUES
 	(1, 'Departamento', now(), NULL),
 	(2, 'Casa', now(), NULL);
+
+SELECT SETVAL('sh."ownerships_types_id_seq"', (SELECT MAX(id) FROM "sh".ownerships_types), true);
 
 INSERT INTO "sh".restrictions (id, pets, smokers, children, renter_count, created_at, updated_at) VALUES
 	(1, TRUE, FALSE, FALSE, 2, now(), NULL),
@@ -415,6 +435,8 @@ INSERT INTO "sh".restrictions (id, pets, smokers, children, renter_count, create
 	(19, FALSE, FALSE, TRUE, 5, now(), NULL),
 	(20, FALSE, TRUE, FALSE, 6, now(), NULL);
 
+SELECT SETVAL('sh."restrictions_id_seq"', (SELECT MAX(id) FROM "sh".restrictions), true);
+
 INSERT INTO "sh".ownerships (id, shared, rooms, bathrooms, size, rating, ownerships_state, ownerships_types_id, owners_id, restrictions_id, coordinates_id, addresses_id, created_at, updated_at) VALUES
 	(1, TRUE, 6, 4, 86, 1, FALSE, 1, 10, 3, 5, 13, now(), NULL),
 	(2, FALSE, 2, 2, 40, 2, FALSE, 2, 14, 2, 9, 11, now(), NULL),
@@ -424,14 +446,18 @@ INSERT INTO "sh".ownerships (id, shared, rooms, bathrooms, size, rating, ownersh
 	(6, FALSE, 2, 3, 80, 2, TRUE, 2, 18, 1, 12, 10, now(), NULL),
 	(7, FALSE, 5, 2, 31, 4, FALSE, 1, 3, 2, 16, 1, now(), NULL);
 
-INSERT INTO "sh".ownerships (id, imageurl, public_id, ownerships_id, created_at, updated_at) VALUES
-	(1, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891816/segundohogar/images/bbbelmhjusxpjlaesjam.jpg", "segundohogar/images/bbbelmhjusxpjlaesjam", 1, now(), NULL),
-	(2, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891808/segundohogar/images/dv4oypog7bn5mlpe0dlj.jpg", "segundohogar/images/dv4oypog7bn5mlpe0dlj", 2, now(), NULL),
-	(3, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891802/segundohogar/images/xzhru9nytkpecqmhedh9.jpg", "segundohogar/images/xzhru9nytkpecqmhedh9", 3, now(), NULL),
-	(4, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891795/segundohogar/images/upbvrdum45bk1e1yoii3.webp", "segundohogar/images/upbvrdum45bk1e1yoii3", 4, now(), NULL),
-	(5, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891789/segundohogar/images/lyy3m4qbvoiznihjrrjk.jpg", "segundohogar/images/lyy3m4qbvoiznihjrrjk", 5, now(), NULL),
-	(6, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891782/segundohogar/images/omz7ur2rcsncoalxq4rd.jpg", "segundohogar/images/omz7ur2rcsncoalxq4rd", 6, now(), NULL),
-	(7, "https://res.cloudinary.com/dfzlexoul/image/upload/v1672891747/segundohogar/images/bserg8l2vffbkyepielu.webp", "segundohogar/images/bserg8l2vffbkyepielu", 7, now(), NULL);
+SELECT SETVAL('sh."ownerships_id_seq"', (SELECT MAX(id) FROM "sh".ownerships), true);
+
+INSERT INTO "sh".ownerships_images (id, imageurl, public_id, ownerships_id, created_at, updated_at) VALUES
+	(1, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891816/segundohogar/images/bbbelmhjusxpjlaesjam.jpg', 'segundohogar/images/bbbelmhjusxpjlaesjam', 1, now(), NULL),
+	(2, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891808/segundohogar/images/dv4oypog7bn5mlpe0dlj.jpg', 'segundohogar/images/dv4oypog7bn5mlpe0dlj', 2, now(), NULL),
+	(3, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891802/segundohogar/images/xzhru9nytkpecqmhedh9.jpg', 'segundohogar/images/xzhru9nytkpecqmhedh9', 3, now(), NULL),
+	(4, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891795/segundohogar/images/upbvrdum45bk1e1yoii3.webp', 'segundohogar/images/upbvrdum45bk1e1yoii3', 4, now(), NULL),
+	(5, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891789/segundohogar/images/lyy3m4qbvoiznihjrrjk.jpg', 'segundohogar/images/lyy3m4qbvoiznihjrrjk', 5, now(), NULL),
+	(6, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891782/segundohogar/images/omz7ur2rcsncoalxq4rd.jpg', 'segundohogar/images/omz7ur2rcsncoalxq4rd', 6, now(), NULL),
+	(7, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891747/segundohogar/images/bserg8l2vffbkyepielu.webp', 'segundohogar/images/bserg8l2vffbkyepielu', 7, now(), NULL);
+
+SELECT SETVAL('sh."ownerships_images_id_seq"', (SELECT MAX(id) FROM "sh".ownerships_images), true);
 
 INSERT INTO "sh".students (id, file_number, shared, persons_id, carrers_id, created_at, updated_at) VALUES
 	(1, 4577, FALSE, 1, 2, now(), NULL),
@@ -455,6 +481,8 @@ INSERT INTO "sh".students (id, file_number, shared, persons_id, carrers_id, crea
 	(19, 5566, FALSE, 19, 3, now(), NULL),
 	(20, 1542, TRUE, 20, 3, now(), NULL);
 
+SELECT SETVAL('sh."students_id_seq"', (SELECT MAX(id) FROM "sh".students), true);
+
 INSERT INTO "sh".rents (id, start_date, end_date, ownerships_id, students_id, created_at, updated_at) VALUES
 	(1, now(), '2022-07-02', 1, 13, now(), NULL),
 	(2, now(), '2022-05-12', 2, 12, now(), NULL),
@@ -477,6 +505,8 @@ INSERT INTO "sh".rents (id, start_date, end_date, ownerships_id, students_id, cr
 	(19, now(), '2022-11-29', 5, 11, now(), NULL),
 	(20, now(), '2022-07-10', 6, 18, now(), NULL);
 
+SELECT SETVAL('sh."rents_id_seq"', (SELECT MAX(id) FROM "sh".rents), true);
+
 INSERT INTO "sh".prices_rents (id, amount, datetime, rents_id, created_at, updated_at) VALUES
 	(1, 16288.76, now(), 4, now(), NULL),
 	(2, 13442.29, now(), 17, now(), NULL),
@@ -498,6 +528,8 @@ INSERT INTO "sh".prices_rents (id, amount, datetime, rents_id, created_at, updat
 	(18, 22198.55, now(), 20, now(), NULL),
 	(19, 22081.62, now(), 14, now(), NULL),
 	(20, 15487.13, now(), 5, now(), NULL);
+
+SELECT SETVAL('sh."prices_rents_id_seq"', (SELECT MAX(id) FROM "sh".prices_rents), true);
 
 INSERT INTO "sh".publications (id, title, description, datetime, expiration_date, price, is_furnished, contact_name, contact_phone, contact_email, publication_state, ownerships_id, created_at, updated_at) VALUES
 	(1, 'Voluptatem et est hic.', 'Ut quisquam dicta officiis eaque aspernatur et cumque. Qui fuga qui veniam.', now(), '2022-05-02 00:00:00', 45857.06, FALSE, 'Edmund Macejkovic', '669-773-6217', 'fkohler@hotmail.com', FALSE, 1, now(), NULL),
@@ -540,6 +572,7 @@ INSERT INTO "sh".publications (id, title, description, datetime, expiration_date
 
 	(20, 'In culpa sunt est est.', 'Amet eius ex doloremque. Tenetur consequuntur quod ab eos aut libero. Autem itaque et eligendi.', now(), '2022-05-02 00:00:00', 80423.67, TRUE, 'Malvina Hintz', '+1-360-962-2015', 'beier.hilbert@mccullough.com', TRUE, 5, now(), NULL);
 
+SELECT SETVAL('sh."publications_id_seq"', (SELECT MAX(id) FROM "sh".publications), true);
 
 INSERT INTO "sh".requests (id, request_state, message, datetime, publications_id, created_at, updated_at) VALUES
 	(1, TRUE, 'Atque vero recusandae suscipit beatae ea sint. Minima dolorem ut cupiditate id.', now(), 1, now(), NULL),
@@ -563,6 +596,8 @@ INSERT INTO "sh".requests (id, request_state, message, datetime, publications_id
 	(19, FALSE, 'Optio voluptatibus nemo perspiciatis rerum est ut. Voluptatem non voluptas dolorem dicta.', now(), 19, now(), NULL),
 	(20, TRUE, 'Voluptas ut modi molestiae quos maxime ea vero. Dolor quaerat ut consequatur itaque alias.', now(), 20, now(), NULL);
 
+SELECT SETVAL('sh."requests_id_seq"', (SELECT MAX(id) FROM "sh".requests), true);
+
 INSERT INTO "sh".user_categories (id, descripcion, created_at, updated_at) VALUES
 	(1, 'Admin', now(), NULL),
 	(2, 'Hydrologist', now(), NULL),
@@ -571,9 +606,12 @@ INSERT INTO "sh".user_categories (id, descripcion, created_at, updated_at) VALUE
 	(5, 'Avionics Technician', now(), NULL),
 	(6, 'School Social Worker', now(), NULL);
 
+SELECT SETVAL('sh."user_categories_id_seq"', (SELECT MAX(id) FROM "sh".user_categories), true);
+
 INSERT INTO "sh".users (id, username, email, password, user_status, remember_token, persons_id, user_categories_id, avatar, bio, created_at, updated_at) VALUES
 	(1, 'admin', 'admin@admin.com', '$2y$10$oBIVbHlhN44w4rkTF/d.6eF5Mit5B0WkTS5S0gwAuntcz24fa23Eu', true, NULL, 1, 1, NULL, NULL, now(), NULL);
 
+SELECT SETVAL('sh."users_id_seq"', (SELECT MAX(id) FROM "sh".users), true);
 
 INSERT INTO "sh".tags (id, descripcion, created_at, updated_at) VALUES
 	(1, 'Comedia', now(), NULL),
@@ -596,3 +634,5 @@ INSERT INTO "sh".tags (id, descripcion, created_at, updated_at) VALUES
 	(18, 'Hogar y jardín', now(), NULL),
 	(19, 'Viajes', now(), NULL),
 	(20, 'Actividades al aire libre', now(), NULL);
+
+SELECT SETVAL('sh."tags_id_seq"', (SELECT MAX(id) FROM "sh".tags), true);
