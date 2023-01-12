@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "sh".universities (
    "updated_at" timestamp NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "sh".carrers (
+CREATE TABLE IF NOT EXISTS "sh".careers (
    "id" SERIAL PRIMARY KEY,
    "name" varchar(255) NOT NULL,
    "abbr" varchar(255) NOT NULL,
@@ -137,12 +137,12 @@ CREATE TABLE IF NOT EXISTS "sh".students (
    "file_number" bigint NOT NULL,
    "shared" boolean DEFAULT NULL,
    "persons_id" bigint CHECK ("persons_id" >= 0) NOT NULL,
-   "carrers_id" bigint CHECK ("carrers_id" >= 0) DEFAULT NULL,
+   "careers_id" bigint CHECK ("careers_id" >= 0) DEFAULT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL,
 
    CONSTRAINT fk_persons_id FOREIGN KEY("persons_id") REFERENCES "sh".persons("id"),
-   CONSTRAINT fk_carrers_id FOREIGN KEY("carrers_id") REFERENCES "sh".carrers("id")
+   CONSTRAINT fk_careers_id FOREIGN KEY("careers_id") REFERENCES "sh".careers("id")
 );
 
 CREATE TABLE IF NOT EXISTS "sh".rents (
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS "sh".requests (
 
 CREATE TABLE IF NOT EXISTS "sh".user_categories (
    "id" SERIAL PRIMARY KEY,
-   "descripcion" varchar(255) NOT NULL,
+   "description" varchar(255) NOT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL
 );
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS "sh".users (
 
 CREATE TABLE IF NOT EXISTS "sh".tags (
    "id" SERIAL PRIMARY KEY,
-   "descripcion" varchar(255) NOT NULL,
+   "description" varchar(255) NOT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL
 );
@@ -262,14 +262,14 @@ INSERT INTO "sh".universities (id, name, campus, created_at, updated_at) VALUES
 
 SELECT SETVAL('sh."universities_id_seq"', (SELECT MAX(id) FROM "sh".universities), true);
 
-INSERT INTO "sh".carrers (id, name, abbr, university_id, created_at, updated_at) VALUES
+INSERT INTO "sh".careers (id, name, abbr, university_id, created_at, updated_at) VALUES
 	(1, 'Ingeniería en sistemas de información', 'ISI', 1, now(), NULL),
 	(2, 'Ingeniería mecánica', 'MEC', 1, now(), NULL),
 	(3, 'Ingeniería eléctrica', 'ELE', 1, now(), NULL),
 	(4, 'Ingeniería electrónica', 'ELT', 1, now(), NULL),
 	(5, 'Ingeniería civil', 'CIV', 1, now(), NULL);
 
-SELECT SETVAL('sh."carrers_id_seq"', (SELECT MAX(id) FROM "sh".carrers), true);
+SELECT SETVAL('sh."careers_id_seq"', (SELECT MAX(id) FROM "sh".careers), true);
 
 INSERT INTO "sh".states (id, name, created_at, updated_at) VALUES
 	(1, 'Buenos Aires', now(), NULL),
@@ -460,7 +460,7 @@ INSERT INTO "sh".ownerships_images (id, imageurl, public_id, ownerships_id, crea
 
 SELECT SETVAL('sh."ownerships_images_id_seq"', (SELECT MAX(id) FROM "sh".ownerships_images), true);
 
-INSERT INTO "sh".students (id, file_number, shared, persons_id, carrers_id, created_at, updated_at) VALUES
+INSERT INTO "sh".students (id, file_number, shared, persons_id, careers_id, created_at, updated_at) VALUES
 	(1, 4577, FALSE, 1, 2, now(), NULL),
 	(2, 4504, TRUE, 2, 3, now(), NULL),
 	(3, 8880, TRUE, 3, 4, now(), NULL),
@@ -599,13 +599,10 @@ INSERT INTO "sh".requests (id, request_state, message, datetime, publications_id
 
 SELECT SETVAL('sh."requests_id_seq"', (SELECT MAX(id) FROM "sh".requests), true);
 
-INSERT INTO "sh".user_categories (id, descripcion, created_at, updated_at) VALUES
+INSERT INTO "sh".user_categories (id, description, created_at, updated_at) VALUES
 	(1, 'Admin', now(), NULL),
-	(2, 'Hydrologist', now(), NULL),
-	(3, 'Mathematical Science Teacher', now(), NULL),
-	(4, 'Audiologist', now(), NULL),
-	(5, 'Avionics Technician', now(), NULL),
-	(6, 'School Social Worker', now(), NULL);
+	(2, 'Student', now(), NULL),
+	(3, 'Owner', now(), NULL);
 
 SELECT SETVAL('sh."user_categories_id_seq"', (SELECT MAX(id) FROM "sh".user_categories), true);
 
@@ -614,7 +611,7 @@ INSERT INTO "sh".users (id, username, email, password, user_status, remember_tok
 
 SELECT SETVAL('sh."users_id_seq"', (SELECT MAX(id) FROM "sh".users), true);
 
-INSERT INTO "sh".tags (id, descripcion, created_at, updated_at) VALUES
+INSERT INTO "sh".tags (id, description, created_at, updated_at) VALUES
 	(1, 'Comedia', now(), NULL),
 	(2, 'Entretenimiento', now(), NULL),
 	(3, 'Juegos', now(), NULL),
