@@ -577,9 +577,9 @@ INSERT INTO "sh".requests (id, request_state, message, datetime, publications_id
 SELECT SETVAL('sh."requests_id_seq"', (SELECT MAX(id) FROM "sh".requests), true);
 
 INSERT INTO "sh".user_categories (id, description, created_at, updated_at) VALUES
-	(1, 'Admin', now(), NULL),
-	(2, 'Student', now(), NULL),
-	(3, 'Owner', now(), NULL);
+	(1, 'admin', now(), NULL),
+	(2, 'student', now(), NULL),
+	(3, 'owner', now(), NULL);
 
 SELECT SETVAL('sh."user_categories_id_seq"', (SELECT MAX(id) FROM "sh".user_categories), true);
 
