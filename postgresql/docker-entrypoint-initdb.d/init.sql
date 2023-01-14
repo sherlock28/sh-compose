@@ -584,7 +584,7 @@ INSERT INTO "sh".user_categories (id, description, created_at, updated_at) VALUE
 SELECT SETVAL('sh."user_categories_id_seq"', (SELECT MAX(id) FROM "sh".user_categories), true);
 
 INSERT INTO "sh".users (id, username, email, password, user_status, remember_token, persons_id, user_categories_id, avatar, bio, created_at, updated_at) VALUES
-	(1, 'admin', 'admin@admin.com', '$2y$10$oBIVbHlhN44w4rkTF/d.6eF5Mit5B0WkTS5S0gwAuntcz24fa23Eu', true, NULL, 1, 1, NULL, NULL, now(), NULL);
+	(1, 'admin', 'admin@admin.com', '$2a$10$F2WPRQyexJJ2O5yu8VubougncNGK5qWO0G7cOU/XbOgr5jWdvMJQW', true, NULL, 1, 1, NULL, NULL, now(), NULL);
 
 SELECT SETVAL('sh."users_id_seq"', (SELECT MAX(id) FROM "sh".users), true);
 
