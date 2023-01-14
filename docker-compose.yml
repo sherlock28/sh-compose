@@ -23,6 +23,9 @@ services:
     restart: always
     env_file:
       - ./hasura/hasura.env
+    networks:
+      - default
+      - sh-network
     # volumes:
     #   - ./hasura/metadata:/hasura-metadata
   database:
@@ -56,6 +59,12 @@ services:
     depends_on:
       - hasura
       - database
+
+networks:
+  sh-network:
+    external: false
+    name: sh-network
+
 volumes:
   neodata:
   neoplugins:
