@@ -338,7 +338,7 @@ INSERT INTO "sh".coordinates (id, lat, lon, created_at, updated_at) VALUES
 SELECT SETVAL('sh."coordinates_id_seq"', (SELECT MAX(id) FROM "sh".coordinates), true);
 
 INSERT INTO "sh".persons (id, lastname, firstname, gender, birth_date, phone, created_at, updated_at) VALUES
-	(1, 'Altenwerth', 'Edwardo', 'male', '1995-04-13', '+15314181299', now(), NULL),
+	(1, 'Holmes', 'Sherlock', 'male', '1995-04-13', '+15314181299', now(), NULL),
 	(2, 'Jast', 'Nels', 'female', '2002-03-12', '+18138390150', now(), NULL),
 	(3, 'Bayer', 'Hershel', 'female', '1995-10-24', '+14453050771', now(), NULL),
 	(4, 'Rowe', 'Ewald', 'male', '2013-04-26', '+17733443231', now(), NULL),
@@ -438,26 +438,26 @@ INSERT INTO "sh".ownerships_images (id, imageurl, public_id, ownerships_id, crea
 SELECT SETVAL('sh."ownerships_images_id_seq"', (SELECT MAX(id) FROM "sh".ownerships_images), true);
 
 INSERT INTO "sh".students (id, file_number, shared, persons_id, careers_id, created_at, updated_at) VALUES
-	(1, 4577, FALSE, 1, 2, now(), NULL),
-	(2, 4504, TRUE, 2, 3, now(), NULL),
-	(3, 8880, TRUE, 3, 4, now(), NULL),
-	(4, 1681, FALSE, 4, 1, now(), NULL),
-	(5, 1380, FALSE, 5, 5, now(), NULL),
-	(6, 3874, TRUE, 6, 5, now(), NULL),
-	(7, 3586, FALSE, 7, 5, now(), NULL),
-	(8, 6951, TRUE, 8, 2, now(), NULL),
-	(9, 8289, TRUE, 9, 2, now(), NULL),
-	(10, 3531, TRUE, 10, 5, now(), NULL),
-	(11, 6517, FALSE, 11, 1, now(), NULL),
-	(12, 8419, FALSE, 12, 1, now(), NULL),
-	(13, 1331, FALSE, 13, 4, now(), NULL),
-	(14, 5435, TRUE, 14, 4, now(), NULL),
-	(15, 7790, TRUE, 15, 2, now(), NULL),
-	(16, 1898, FALSE, 16, 2, now(), NULL),
-	(17, 2448, FALSE, 17, 4, now(), NULL),
-	(18, 7792, TRUE, 18, 2, now(), NULL),
-	(19, 5566, FALSE, 19, 3, now(), NULL),
-	(20, 1542, TRUE, 20, 3, now(), NULL);
+	(1, 11111, FALSE, 1, 1, now(), NULL),
+	(2, 45040, TRUE, 2, 3, now(), NULL),
+	(3, 88800, TRUE, 3, 4, now(), NULL),
+	(4, 16810, FALSE, 4, 1, now(), NULL),
+	(5, 13800, FALSE, 5, 5, now(), NULL),
+	(6, 38740, TRUE, 6, 5, now(), NULL),
+	(7, 35860, FALSE, 7, 5, now(), NULL),
+	(8, 69510, TRUE, 8, 2, now(), NULL),
+	(9, 82890, TRUE, 9, 2, now(), NULL),
+	(10, 35310, TRUE, 10, 5, now(), NULL),
+	(11, 65170, FALSE, 11, 1, now(), NULL),
+	(12, 84190, FALSE, 12, 1, now(), NULL),
+	(13, 13310, FALSE, 13, 4, now(), NULL),
+	(14, 54350, TRUE, 14, 4, now(), NULL),
+	(15, 77900, TRUE, 15, 2, now(), NULL),
+	(16, 18980, FALSE, 16, 2, now(), NULL),
+	(17, 24480, FALSE, 17, 4, now(), NULL),
+	(18, 77920, TRUE, 18, 2, now(), NULL),
+	(19, 55660, FALSE, 19, 3, now(), NULL),
+	(20, 15420, TRUE, 20, 3, now(), NULL);
 
 SELECT SETVAL('sh."students_id_seq"', (SELECT MAX(id) FROM "sh".students), true);
 
