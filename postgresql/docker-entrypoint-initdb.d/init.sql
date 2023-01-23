@@ -138,11 +138,13 @@ CREATE TABLE IF NOT EXISTS "sh".students (
    "shared" boolean DEFAULT NULL,
    "persons_id" bigint CHECK ("persons_id" >= 0) NOT NULL,
    "careers_id" bigint CHECK ("careers_id" >= 0) DEFAULT NULL,
+   "cities_id" bigint CHECK ("cities_id" >= 0) DEFAULT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL,
 
    CONSTRAINT fk_persons_id FOREIGN KEY("persons_id") REFERENCES "sh".persons("id"),
-   CONSTRAINT fk_careers_id FOREIGN KEY("careers_id") REFERENCES "sh".careers("id")
+   CONSTRAINT fk_careers_id FOREIGN KEY("careers_id") REFERENCES "sh".careers("id"),
+	CONSTRAINT fk_cities_id FOREIGN KEY("cities_id") REFERENCES "sh".cities("id")
 );
 
 CREATE TABLE IF NOT EXISTS "sh".rents (
@@ -436,78 +438,6 @@ INSERT INTO "sh".ownerships_images (id, imageurl, public_id, ownerships_id, crea
 	(7, 'https://res.cloudinary.com/dfzlexoul/image/upload/v1672891747/segundohogar/images/bserg8l2vffbkyepielu.webp', 'segundohogar/images/bserg8l2vffbkyepielu', 7, now(), NULL);
 
 SELECT SETVAL('sh."ownerships_images_id_seq"', (SELECT MAX(id) FROM "sh".ownerships_images), true);
-
-INSERT INTO "sh".students (id, file_number, shared, persons_id, careers_id, created_at, updated_at) VALUES
-	(1, 11111, FALSE, 1, 1, now(), NULL),
-	(2, 45040, TRUE, 2, 3, now(), NULL),
-	(3, 88800, TRUE, 3, 4, now(), NULL),
-	(4, 16810, FALSE, 4, 1, now(), NULL),
-	(5, 13800, FALSE, 5, 5, now(), NULL),
-	(6, 38740, TRUE, 6, 5, now(), NULL),
-	(7, 35860, FALSE, 7, 5, now(), NULL),
-	(8, 69510, TRUE, 8, 2, now(), NULL),
-	(9, 82890, TRUE, 9, 2, now(), NULL),
-	(10, 35310, TRUE, 10, 5, now(), NULL),
-	(11, 65170, FALSE, 11, 1, now(), NULL),
-	(12, 84190, FALSE, 12, 1, now(), NULL),
-	(13, 13310, FALSE, 13, 4, now(), NULL),
-	(14, 54350, TRUE, 14, 4, now(), NULL),
-	(15, 77900, TRUE, 15, 2, now(), NULL),
-	(16, 18980, FALSE, 16, 2, now(), NULL),
-	(17, 24480, FALSE, 17, 4, now(), NULL),
-	(18, 77920, TRUE, 18, 2, now(), NULL),
-	(19, 55660, FALSE, 19, 3, now(), NULL),
-	(20, 15420, TRUE, 20, 3, now(), NULL);
-
-SELECT SETVAL('sh."students_id_seq"', (SELECT MAX(id) FROM "sh".students), true);
-
-INSERT INTO "sh".rents (id, start_date, end_date, ownerships_id, students_id, created_at, updated_at) VALUES
-	(1, now(), '2022-07-02', 1, 13, now(), NULL),
-	(2, now(), '2022-05-12', 2, 12, now(), NULL),
-	(3, now(), '2022-07-14', 3, 14, now(), NULL),
-	(4, now(), '2022-11-30', 4, 13, now(), NULL),
-	(5, now(), '2022-06-18', 5, 6, now(), NULL),
-	(6, now(), '2022-12-27', 6, 13, now(), NULL),
-	(7, now(), '2022-09-24', 7, 1, now(), NULL),
-	(8, now(), '2022-06-11', 1, 9, now(), NULL),
-	(9, now(), '2022-09-20', 2, 14, now(), NULL),
-	(10, now(), '2022-05-21', 3, 2, now(), NULL),
-	(11, now(), '2022-05-23', 4, 18, now(), NULL),
-	(12, now(), '2022-12-21', 5, 11, now(), NULL),
-	(13, now(), '2022-09-13', 6, 1, now(), NULL),
-	(14, now(), '2022-09-03', 7, 6, now(), NULL),
-	(15, now(), '2022-09-09', 1, 9, now(), NULL),
-	(16, now(), '2022-06-27', 2, 13, now(), NULL),
-	(17, now(), '2022-11-24', 3, 10, now(), NULL),
-	(18, now(), '2022-01-17', 4, 11, now(), NULL),
-	(19, now(), '2022-11-29', 5, 11, now(), NULL),
-	(20, now(), '2022-07-10', 6, 18, now(), NULL);
-
-SELECT SETVAL('sh."rents_id_seq"', (SELECT MAX(id) FROM "sh".rents), true);
-
-INSERT INTO "sh".prices_rents (id, amount, datetime, rents_id, created_at, updated_at) VALUES
-	(1, 16288.76, now(), 4, now(), NULL),
-	(2, 13442.29, now(), 17, now(), NULL),
-	(3, 12313.77, now(), 7, now(), NULL),
-	(4, 7721.97, now(), 11, now(), NULL),
-	(5, 2356.89, now(), 1, now(), NULL),
-	(6, 17556.09, now(), 2, now(), NULL),
-	(7, 9352.09, now(), 7, now(), NULL),
-	(8, 26844.2, now(), 6, now(), NULL),
-	(9, 16959.86, now(), 5, now(), NULL),
-	(10, 29730.68, now(), 17, now(), NULL),
-	(11, 12090.67, now(), 15, now(), NULL),
-	(12, 2610.17, now(), 3, now(), NULL),
-	(13, 26315.25, now(), 11, now(), NULL),
-	(14, 29176.41, now(), 20, now(), NULL),
-	(15, 29804.9, now(), 8, now(), NULL),
-	(16, 24770.99, now(), 8, now(), NULL),
-	(17, 15895.62, now(), 10, now(), NULL),
-	(18, 22198.55, now(), 20, now(), NULL),
-	(19, 22081.62, now(), 14, now(), NULL),
-	(20, 15487.13, now(), 5, now(), NULL);
-
-SELECT SETVAL('sh."prices_rents_id_seq"', (SELECT MAX(id) FROM "sh".prices_rents), true);
 
 INSERT INTO "sh".publications (id, title, description, datetime, expiration_date, price, is_furnished, contact_name, contact_phone, contact_email, publication_state, ownerships_id, created_at, updated_at) VALUES
 	(1, 'Voluptatem et est hic.', 'Ut quisquam dicta officiis eaque aspernatur et cumque. Qui fuga qui veniam.', now(), '2022-05-02 00:00:00', 45857.06, FALSE, 'Edmund Macejkovic', '669-773-6217', 'fkohler@hotmail.com', FALSE, 1, now(), NULL),
@@ -22878,3 +22808,78 @@ INSERT INTO "sh".cities (id, name, state_id, created_at, updated_at) VALUES
         (22348, 'Piedra Clavada', 19, now(), NULL);
 
 SELECT SETVAL('sh."cities_id_seq"', (SELECT MAX(id) FROM "sh".cities), true);
+
+
+INSERT INTO "sh".students (id, file_number, shared, persons_id, careers_id, cities_id, created_at, updated_at) VALUES
+	(1, 11111, FALSE, 1, 1, 15065, now(), NULL),
+	(2, 45040, TRUE, 2, 3, 15065, now(), NULL),
+	(3, 88800, TRUE, 3, 4, 15065, now(), NULL),
+	(4, 16810, FALSE, 4, 1, 15065, now(), NULL),
+	(5, 13800, FALSE, 5, 5, 15065, now(), NULL),
+	(6, 38740, TRUE, 6, 5, 15065, now(), NULL),
+	(7, 35860, FALSE, 7, 5, 15065, now(), NULL),
+	(8, 69510, TRUE, 8, 2, 15065, now(), NULL),
+	(9, 82890, TRUE, 9, 2, 15065, now(), NULL),
+	(10, 35310, TRUE, 10, 5, 15065, now(), NULL),
+	(11, 65170, FALSE, 11, 1, 15065, now(), NULL),
+	(12, 84190, FALSE, 12, 1, 15065, now(), NULL),
+	(13, 13310, FALSE, 13, 4, 15065, now(), NULL),
+	(14, 54350, TRUE, 14, 4, 15065, now(), NULL),
+	(15, 77900, TRUE, 15, 2, 15065, now(), NULL),
+	(16, 18980, FALSE, 16, 2, 15065, now(), NULL),
+	(17, 24480, FALSE, 17, 4, 15065, now(), NULL),
+	(18, 77920, TRUE, 18, 2, 15065, now(), NULL),
+	(19, 55660, FALSE, 19, 3, 15065, now(), NULL),
+	(20, 15420, TRUE, 20, 3, 15065, now(), NULL);
+
+SELECT SETVAL('sh."students_id_seq"', (SELECT MAX(id) FROM "sh".students), true);
+
+
+INSERT INTO "sh".rents (id, start_date, end_date, ownerships_id, students_id, created_at, updated_at) VALUES
+	(1, now(), '2022-07-02', 1, 13, now(), NULL),
+	(2, now(), '2022-05-12', 2, 12, now(), NULL),
+	(3, now(), '2022-07-14', 3, 14, now(), NULL),
+	(4, now(), '2022-11-30', 4, 13, now(), NULL),
+	(5, now(), '2022-06-18', 5, 6, now(), NULL),
+	(6, now(), '2022-12-27', 6, 13, now(), NULL),
+	(7, now(), '2022-09-24', 7, 1, now(), NULL),
+	(8, now(), '2022-06-11', 1, 9, now(), NULL),
+	(9, now(), '2022-09-20', 2, 14, now(), NULL),
+	(10, now(), '2022-05-21', 3, 2, now(), NULL),
+	(11, now(), '2022-05-23', 4, 18, now(), NULL),
+	(12, now(), '2022-12-21', 5, 11, now(), NULL),
+	(13, now(), '2022-09-13', 6, 1, now(), NULL),
+	(14, now(), '2022-09-03', 7, 6, now(), NULL),
+	(15, now(), '2022-09-09', 1, 9, now(), NULL),
+	(16, now(), '2022-06-27', 2, 13, now(), NULL),
+	(17, now(), '2022-11-24', 3, 10, now(), NULL),
+	(18, now(), '2022-01-17', 4, 11, now(), NULL),
+	(19, now(), '2022-11-29', 5, 11, now(), NULL),
+	(20, now(), '2022-07-10', 6, 18, now(), NULL);
+
+SELECT SETVAL('sh."rents_id_seq"', (SELECT MAX(id) FROM "sh".rents), true);
+
+
+INSERT INTO "sh".prices_rents (id, amount, datetime, rents_id, created_at, updated_at) VALUES
+	(1, 16288.76, now(), 4, now(), NULL),
+	(2, 13442.29, now(), 17, now(), NULL),
+	(3, 12313.77, now(), 7, now(), NULL),
+	(4, 7721.97, now(), 11, now(), NULL),
+	(5, 2356.89, now(), 1, now(), NULL),
+	(6, 17556.09, now(), 2, now(), NULL),
+	(7, 9352.09, now(), 7, now(), NULL),
+	(8, 26844.2, now(), 6, now(), NULL),
+	(9, 16959.86, now(), 5, now(), NULL),
+	(10, 29730.68, now(), 17, now(), NULL),
+	(11, 12090.67, now(), 15, now(), NULL),
+	(12, 2610.17, now(), 3, now(), NULL),
+	(13, 26315.25, now(), 11, now(), NULL),
+	(14, 29176.41, now(), 20, now(), NULL),
+	(15, 29804.9, now(), 8, now(), NULL),
+	(16, 24770.99, now(), 8, now(), NULL),
+	(17, 15895.62, now(), 10, now(), NULL),
+	(18, 22198.55, now(), 20, now(), NULL),
+	(19, 22081.62, now(), 14, now(), NULL),
+	(20, 15487.13, now(), 5, now(), NULL);
+
+SELECT SETVAL('sh."prices_rents_id_seq"', (SELECT MAX(id) FROM "sh".prices_rents), true);
