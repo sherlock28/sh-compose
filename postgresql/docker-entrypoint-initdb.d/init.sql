@@ -519,26 +519,47 @@ INSERT INTO "sh".users (id, username, email, password, user_status, remember_tok
 SELECT SETVAL('sh."users_id_seq"', (SELECT MAX(id) FROM "sh".users), true);
 
 INSERT INTO "sh".tags (id, description, created_at, updated_at) VALUES
-	(1, 'Comedia', now(), NULL),
-	(2, 'Entretenimiento', now(), NULL),
-	(3, 'Juegos', now(), NULL),
-	(4, 'Deporte', now(), NULL),
-	(5, 'Baile', now(), NULL),
-	(6, 'Animes y cómics', now(), NULL),
-	(7, 'Vide cotidiana', now(), NULL),
-	(8, 'Automoción y vehículos', now(), NULL),
-	(9, 'Música', now(), NULL),
-	(10, 'Animales', now(), NULL),
-	(11, 'Ciencia y educación', now(), NULL),
-	(12, 'Comida y bebida', now(), NULL),
-	(13, 'Familia', now(), NULL),
-	(14, 'Belleza y estilo', now(), NULL),
-	(15, 'Fitness y salud', now(), NULL),
-	(16, 'Arte', now(), NULL),
-	(17, 'ASMR', now(), NULL),
-	(18, 'Hogar y jardín', now(), NULL),
-	(19, 'Viajes', now(), NULL),
-	(20, 'Actividades al aire libre', now(), NULL);
+	-- Sports
+	(1, 'Basket', now(), NULL),
+	(2, 'Futbol', now(), NULL),
+	(3, 'Tenis', now(), NULL),
+	(4, 'Voley', now(), NULL),
+	(5, 'Hockey', now(), NULL),
+	(6, 'Handball', now(), NULL),
+	(7, 'Ciclismo', now(), NULL),
+	-- Pets
+	(8, 'Gato', now(), NULL),
+	(9, 'Perro', now(), NULL),
+	(10, 'Hamster', now(), NULL),
+	(11, 'Aracnidos', now(), NULL),
+	(12, 'Tortuga', now(), NULL),
+	(13, 'Serpiente', now(), NULL),
+	(14, 'Peces', now(), NULL),
+	(15, 'Aves', now(), NULL),
+	-- Movie genres
+	(16, 'Fantasia', now(), NULL),
+	(17, 'Terror', now(), NULL),
+	(18, 'Drama', now(), NULL),
+	(19, 'Romance', now(), NULL),
+	(21, 'Comedia', now(), NULL),
+	(22, 'Accion', now(), NULL),
+	(23, 'Ciencia Ficcion', now(), NULL),
+	-- Music genres
+	(24, 'Cumbia', now(), NULL),
+	(25, 'Folclore', now(), NULL),
+	(26, 'Pop', now(), NULL),
+	(27, 'Rock', now(), NULL),
+	(28, 'Jazz', now(), NULL),
+	(29, 'Electronica', now(), NULL),
+	(30, 'Musica Clasica', now(), NULL),
+	-- Hobbies
+	(31, 'Cocina', now(), NULL),
+	(32, 'Deporte', now(), NULL),
+	(33, 'Bailar', now(), NULL),
+	(34, 'Leer', now(), NULL),
+	(35, 'Tocar instrumento', now(), NULL),
+	(36, 'Carpinteria', now(), NULL),
+	(37, 'Tecnologia', now(), NULL);
 
 SELECT SETVAL('sh."tags_id_seq"', (SELECT MAX(id) FROM "sh".tags), true);
 
