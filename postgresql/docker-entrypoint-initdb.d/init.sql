@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS "sh".ownerships (
    "bathrooms" int NOT NULL,
    "size" int NOT NULL,
    "rating" int NOT NULL,
+	"is_published" boolean NOT NULL DEFAULT false,
    "ownerships_state" boolean NOT NULL,
    "ownerships_types_id" bigint CHECK ("ownerships_types_id" >= 0) NOT NULL,
    "owners_id" bigint CHECK ("owners_id" >= 0) NOT NULL,
