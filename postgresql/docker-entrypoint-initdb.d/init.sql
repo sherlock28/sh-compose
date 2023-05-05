@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS "sh".publications (
    "id" SERIAL PRIMARY KEY ,
    "title" varchar(255) NOT NULL,
    "description" varchar(255) NOT NULL,
-   "datetime" timestamp without time zone NOT NULL,
+   "datetime" timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
    "expiration_date" timestamp without time zone DEFAULT NULL,
    "price" double precision NOT NULL,
    "is_furnished" boolean NOT NULL,
