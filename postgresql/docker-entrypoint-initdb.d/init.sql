@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS "sh".publications (
    "contact_name" varchar(255) NOT NULL,
    "contact_phone" varchar(255) NOT NULL,
    "contact_email" varchar(255) NOT NULL,
-   "publication_state" boolean NOT NULL,
+   "publication_state" boolean NOT NULL DEFAULT TRUE,
    "ownerships_id" bigint CHECK ("ownerships_id" >= 0) NOT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
    "updated_at" timestamp NULL DEFAULT NULL,
