@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS "sh".persons (
    "id" SERIAL PRIMARY KEY,
    "lastname" varchar(255) NOT NULL,
    "firstname" varchar(255) NOT NULL,
-   "gender" varchar(255) NOT NULL,
+   "gender" varchar(255) DEFAULT NULL,
    "birth_date" date DEFAULT NULL,
    "phone" varchar(255) DEFAULT NULL,
    "created_at" timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -212,9 +212,9 @@ CREATE TABLE IF NOT EXISTS "sh".user_categories (
 
 CREATE TABLE IF NOT EXISTS "sh".users (
    "id" SERIAL PRIMARY KEY,
-   "username" varchar(255) NOT NULL,
-   "email" varchar(255) NOT NULL,
-   "password" varchar(255) NOT NULL,
+   "username" varchar(255) DEFAULT NULL,
+   "email" varchar(255) UNIQUE NOT NULL,
+   "password" varchar(255) DEFAULT NULL,
    "user_status" boolean NOT NULL,
    "remember_token" varchar(100) DEFAULT NULL,
    "persons_id" bigint CHECK ("persons_id" >= 0) NOT NULL,
